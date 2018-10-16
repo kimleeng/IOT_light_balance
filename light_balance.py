@@ -4,7 +4,7 @@ import phue
 
 arduinoSerialData = serial.Serial('/dev/ttyACM0',9600)
 
-hue_bridge = Bridge('192.168.1.3')
+hue_bridge = phue.Bridge('192.168.1.3')
 hue_bridge.connect()
 
 while True:
