@@ -12,7 +12,7 @@ while True:
         arduino_data = arduinoSerialData.readline()
         print(arduino_data)
         analog_value = int(arduino_data.strip())
-        norm = ((min(analog_value, 450) - 100.0)/350)
+        norm = 1 - ((min(analog_value, 550) - 100.0)/450)
         print("norm",norm)
         if analog_value < 100:
             hue_bridge.set_light([5,6], 'bri', 1)
