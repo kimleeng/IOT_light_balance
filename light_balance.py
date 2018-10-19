@@ -3,6 +3,9 @@ import serial
 import phue
 import math
 import random
+from Adafruit_IO import Client
+
+aio = Client(,)
 
 arduinoSerialData = serial.Serial('/dev/ttyACM0',9600)
 
@@ -13,6 +16,7 @@ while True:
     if(arduinoSerialData.inWaiting()>0):
         arduino_data = arduinoSerialData.readline()
         print(arduino_data)
+        aio.send('iot-light-sensor', arduino_data)
         analog_value = int(arduino_data.strip())
         norm = ((max(min(analog_value, 350), 50) - 50.0)/300)
         # print("norm",norm)
