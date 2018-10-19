@@ -1,6 +1,7 @@
 #/usr/bin/python3
 import serial
 import phue
+import math
 
 arduinoSerialData = serial.Serial('/dev/ttyACM0',9600)
 
@@ -12,12 +13,13 @@ while True:
         arduino_data = arduinoSerialData.readline()
         print(arduino_data)
         analog_value = int(arduino_data.strip())
-        norm = 1 - ((min(analog_value, 550) - 100.0)/450)
+        norm = 1 - ((max(min(analog_value, 550), 100) - 100.0)/450)
         print("norm",norm)
-        if analog_value < 100:
-            hue_bridge.set_light([5,6], 'bri', 1)
-        elif analog_value > 400:
-            hue_bridge.set_light([5,6], 'bri', 254)
-        else:
-            hue_bridge.set_light([5,6], 'bri', 100)
+        hue_val = math.floor(norm*253) + 1
+        hue_bridge.set_light([5,6], 'bri', hue_val)
+        # if analog_value < 100:
+        # elif analog_value > 400:
+        #     hue_bridge.set_light([5,6], 'bri', 254)
+        # else:
+        #     hue_bridge.set_light([5,6], 'bri', 100)
 
