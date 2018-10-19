@@ -14,7 +14,7 @@ while True:
         arduino_data = arduinoSerialData.readline()
         print(arduino_data)
         analog_value = int(arduino_data.strip())
-        norm = ((max(min(analog_value, 550), 100) - 100.0)/450)
+        norm = ((max(min(analog_value, 350), 50) - 50.0)/300)
         # print("norm",norm)
         hue_val = int(math.floor(norm*253) + 1)
         # print("hue_val",hue_val)
