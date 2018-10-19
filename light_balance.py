@@ -15,7 +15,7 @@ while True:
         analog_value = int(arduino_data.strip())
         norm = 1 - ((max(min(analog_value, 550), 100) - 100.0)/450)
         print("norm",norm)
-        hue_val = math.floor(norm*253) + 1
+        hue_val = int(math.floor(norm*253) + 1)
         print("hue_val",hue_val)
         hue_bridge.set_light([5,6], 'bri', hue_val)
         # if analog_value < 100:
