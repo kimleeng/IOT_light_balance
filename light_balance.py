@@ -20,9 +20,11 @@ while True:
         print("hue_val",hue_val)
         hue_bridge.set_light([5,6], 'bri', hue_val)
         hue = int(math.floor(random.random()*65535))
-        # hue_bridge.set_light([5], 'hue', hue)
+        print("hue1", hue)
+        hue_bridge.set_light([5], 'hue', hue)
         hue = int(math.floor(random.random()*65535))
-        hue_bridge.set_light([6], 'hue', 10000)
+        print("hue2", hue)
+        hue_bridge.set_light([6], 'hue', hue)
         # if analog_value < 100:
         # elif analog_value > 400:
         #     hue_bridge.set_light([5,6], 'bri', 254)
