@@ -18,7 +18,7 @@ while True:
         print("norm",norm)
         hue_val = int(math.floor(norm*253) + 1)
         print("hue_val",hue_val)
-        hue_bridge.set_light([5,6], 'bri', hue_val, hue=hue)
+        hue_bridge.set_light([5,6], 'bri', hue_val)
         hue = math.floor(random.random()*65535)
         hue_bridge.set_light([5], 'hue', hue)
         hue = math.floor(random.random()*65535)
